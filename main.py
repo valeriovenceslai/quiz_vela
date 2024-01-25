@@ -6,6 +6,9 @@ from datetime import datetime
 logging.basicConfig(filename=datetime.now().strftime("%Y%m%d%H%M%S") + '.log', level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
 
+RED = '\033[91m'
+GREEN = '\033[92m'
+ENDC = '\033[0m'
 
 def process_question(row):
     cleaned_row = [col.strip() for col in row if col.strip()]  # Remove leading/trailing spaces from each non-empty column
@@ -22,10 +25,10 @@ def display_question(question_idx, question, answer1, answer2, answer3):
 
 def evaluate_answer(user_answer, correct_answer_idx, correct_answer):
     if user_answer.lower() == correct_answer_idx.lower():
-        print("Succeeded!\n")
+        print(GREEN + "Correct!\n" + ENDC)
         return True
     else:
-        print(f"Wrong. The correct answer was {correct_answer_idx} : {correct_answer}\n")
+        print(RED + "Wrong!" + ENDC + f" The correct answer was {correct_answer_idx} : {correct_answer}\n")
         return False
 
 def main():
