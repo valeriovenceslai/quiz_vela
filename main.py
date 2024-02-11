@@ -1,10 +1,13 @@
 import csv
 import random
 import logging
+import os
 from datetime import datetime
 
 logging.basicConfig(filename=datetime.now().strftime("%Y%m%d%H%M%S") + '.log', level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
+
+FILE_PATH = os.path.dirname(__file__)
 
 RED = '\033[91m'
 GREEN = '\033[92m'
@@ -20,6 +23,8 @@ quiz_sections = {
     'navigazione cartografica ed elettronica' : (967,1288),
     'normativa diportistica': (1288,1472)
 }
+
+valid_answers = ['a', 'b', 'c']
 
 def process_question(row):
     cleaned_row = [col.strip() for col in row if col.strip()]  # Remove leading/trailing spaces from each non-empty column
@@ -43,7 +48,7 @@ def evaluate_answer(user_answer, correct_answer_idx, correct_answer):
         return False
 
 def main():
-    quiz_file_path = "quiz_entro.csv"  # Replace with the actual path to your CSV file
+    quiz_file_path = os.path.join(FILE_PATH, "quiz_entro.csv")  # Replace with the actual path to your CSV file
     
     # Display keys and wait for user input
     print("Choose a quiz section:")
@@ -93,6 +98,9 @@ def main():
 
             user_answer = input("Your choice (a, b, c): ")
             
+            while user_answer not in valid_answers:
+                user_answer = input("Your choice (a, b, c): ")
+
             correct_answer_idx = 'a' if is_true1 == 'V' else ('b' if is_true2 == 'V' else 'c')
             correct_answer     = answer1 if is_true1 == 'V' else (answer2 if is_true2 == 'V' else answer3)
 
