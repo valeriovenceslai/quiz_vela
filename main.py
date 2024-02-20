@@ -49,6 +49,8 @@ def evaluate_answer(user_answer, correct_answer_idx, correct_answer):
 
 def main():
     quiz_file_path = os.path.join(FILE_PATH, "quiz_entro.csv")  # Replace with the actual path to your CSV file
+
+    ALL_IN_ORDER = True
     
     # Display keys and wait for user input
     print("Choose a quiz section:")
@@ -89,7 +91,8 @@ def main():
             if idx in range(target_tuple[0], target_tuple[1]):
                 new_rows.append(el)
 
-        random.shuffle(new_rows)
+        if ALL_IN_ORDER is False:
+            random.shuffle(new_rows)
 
         for row in new_rows:
             
@@ -130,9 +133,10 @@ def main():
                     warning_message += " -"
                 
                 logging.warning(warning_message)
-
-            if success_count + fail_count == 20:  # Stop after 20 questions
-                break
+            
+            if ALL_IN_ORDER is False:
+                if success_count + fail_count == 20:  # Stop after 20 questions
+                    break
 
     print("\nQuiz Stats:")
     print(f"Total Questions: {success_count + fail_count}")
