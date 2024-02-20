@@ -20,7 +20,18 @@ quiz_sections = {
     'manovra e condotta' : (445,599),
     'colreg e segnalamento marittimo' : (600,846),
     'meteorologia' : (847,966),
-    'navigazione cartografica ed elettronica' : (1011,1288), # r1. (967,1011) r2 (1012,1067) GPS (1068,1080) direzioni (1081,1092) magnetismo (1092,1129)
+    'navigazione cartografica ed elettronica' : 
+        {"All" : (967,1288),
+        "Coordinate geografiche" : (967,1011),
+        "Carte nautiche e proiezione di Mercatore" : (1012,1067),
+        "Navigazione elettronica" : (1068,1080),
+        "Orientamento e rosa dei venti" : (1081,1091),
+        "Bussole magnetiche" : (1092,1129),
+        "Elementi di navigazione stimata: tempo, spazio e velocità" : (1130,1201),
+        "Elementi di navigazione costiera" : (1202,1250),
+        "Prora e rotta, scarroccio e deriva per effetto del vento e della corrente" : (1251,1280),
+        "Pubblicazioni" : (1281,1288)
+        },
     'normativa diportistica': (1288,1472)
 }
 
@@ -52,28 +63,61 @@ def main():
 
     ALL_IN_ORDER = True
     
-    # Display keys and wait for user input
-    print("Choose a quiz section:")
-    for idx, section in enumerate(quiz_sections.keys()):
-        print(f"{idx}: {section}")
+    
+    def select_section():
+        while True:
+            print("Choose a quiz section:")
+            for idx, section in enumerate(quiz_sections.keys()):
+                print(f"{idx}: {section}")
 
-    # Get user input
-    user_input = input("Enter the number corresponding to the quiz section: ")
+            user_input = input("Enter the number corresponding to the quiz section: ")
 
-    # Check if the input is a valid number
-    if user_input.isdigit():
-        section_idx = int(user_input)
+            if user_input.isdigit():
+                section_idx = int(user_input)
 
-        # Check if the index is within the valid range
-        if 0 <= section_idx < len(quiz_sections):
-            selected_section = list(quiz_sections.keys())[section_idx]
-            print(f"You selected: {selected_section}")
+                if 0 <= section_idx < len(quiz_sections):
+                    selected_section = list(quiz_sections.keys())[section_idx]
+                    print(f"You selected: {selected_section}")
 
-            target_tuple = quiz_sections[selected_section]
-        else:
-            print("Invalid input. Please enter a number within the specified range.")
-    else:
-        print("Invalid input. Please enter a valid number.")
+                    if isinstance(quiz_sections[selected_section], dict):
+                        target_tuple = select_subsection(quiz_sections[selected_section])
+                    else:
+                        target_tuple = quiz_sections[selected_section]
+                        print(f"Section tuple: {target_tuple}")
+                    break
+                else:
+                    print("Invalid input. Please enter a number within the specified range.")
+            else:
+                print("Invalid input. Please enter a valid number.")
+
+        return target_tuple
+
+    def select_subsection(subsections):
+        while True:
+            print("Choose a subsection:")
+            for idx, subsection in enumerate(subsections.keys()):
+                print(f"{idx}: {subsection}")
+
+            user_input = input("Enter the number corresponding to the subsection: ")
+
+            if user_input.isdigit():
+                subsection_idx = int(user_input)
+
+                if 0 <= subsection_idx < len(subsections):
+                    selected_subsection = list(subsections.keys())[subsection_idx]
+                    print(f"You selected: {selected_subsection}")
+                    target_tuple = subsections[selected_subsection]
+                    print(f"Subsection tuple: {target_tuple}")
+                    break
+                else:
+                    print("Invalid input. Please enter a number within the specified range.")
+            else:
+                print("Invalid input. Please enter a valid number.")
+
+        return target_tuple
+
+    # Call the function to select the section
+    target_tuple = select_section()
     
     with open(quiz_file_path, newline='', encoding='utf-8') as csvfile:
         reader = csv.reader(csvfile, delimiter=',', quotechar='"')
