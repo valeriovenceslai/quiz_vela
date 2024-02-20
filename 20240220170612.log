@@ -1,0 +1,73 @@
+2024-02-20 17:06:25 - WARNING - Question 1013: In una carta di Mercatore, la scala delle latitudini rimane la stessa per tutta la carta?:
+a) sì.
+b) no, non è costante e diminuisce con la latitudine. -
+c) no, non è costante ed aumenta con la latitudine. +
+2024-02-20 17:08:24 - WARNING - Question 1024: Che tipo di carta è il piano nautico in relazione alla scala della carta?:
+a) carta a grande scala riproducente aree di limitate estensioni come porti, rade, isolotti. +
+b) carta a grande scala riproducente aree di elevate estensioni come mari e continenti. -
+c) carta a grande scala, quale quella con scala 1:1.000.000.
+2024-02-20 17:08:54 - WARNING - Question 1025: Si usa la carta gnomonica per la navigazione costiera stimata?:
+a) sempre. -
+b) no, è utilizzabile per pianificare una traversata oceanica. +
+c) sì, perché è prescritta per una navigazione a corto raggio.
+2024-02-20 17:12:13 - WARNING - Question 1043: Sulla carta nautica in proiezione di Mercatore è indicato un segnalamento preceduto da una “ F ”; significa che::
+a) è una costa frastagliata.
+b) è una luce fissa. +
+c) è un faro. -
+2024-02-20 17:13:25 - WARNING - Question 1048: Come si esegue sulla scala della carta nautica, la misura della distanza?:
+a) si esegue con il compasso aperto pari alla distanza da misurare, ci si muove in orizzontale (lungo un parallelo preso a riferimento) soltanto verso la scala di destra delle -
+b) si esegue con il compasso aperto pari alla distanza da misurare, ci si muove in orizzontale (lungo un parallelo preso a riferimento) soltanto verso la scala di sinistra delle latitudini.
+c) si esegue con il compasso aperto pari alla distanza da misurare, ci si muove in orizzontale (lungo un parallelo preso a riferimento) indifferentemente verso la scala di destra o di sinistra delle latitudini. +
+2024-02-20 17:14:45 - WARNING - Question 1051: Il simbolo in figura a fianco, riportato sulla carta nautica, indica::
+a) i limiti di una zona regolamentata. +
+b) la presenza di una tonnara. -
+c) fondo sporco.
+2024-02-20 17:16:16 - WARNING - Question 1055: La scritta “ P.A. ”, posizionata vicino ad un simbolo sulla carta nautica, è utilizzata per indicare::
+a) "posizione approssimativa". +
+b) "posizione di ancoraggio".
+c) "parzialmente affiorante". -
+2024-02-20 17:17:59 - WARNING - Question 1064: Il simbolo rappresentato in figura indica::
+a) la presenza di un cavo telefonico sottomarino.
+b) la presenza di una condotta non specificata. +
+c) la presenza di un cavo elettrico sottomarino. -
+2024-02-20 17:19:13 - WARNING - Question 1068: Per quale finalità è stata creata la funzione MOB (Man Over
+Board ) sui dispositivi GPS?:
+a) conoscere in ogni istante la distanza rispetto al punto in cui è caduto un uomo in mare e determinare la relativa rotta necessaria per tentarne il recupero. +
+b) la funzione MOB, attivata manualmente quando l'uomo cade in mare, emette onde magnetiche a bassa frequenza.
+c) attivare automaticamente un sistema di localizzazione radiogoniometrico per determinare
+il rilevamento rispetto alla posizione dell'uomo caduto in mare. -
+2024-02-20 17:20:13 - WARNING - Question 1071: Quale tra queste affermazioni è corretta?:
+a) le unità da diporto con lunghezza superiore a 15 metri devono essere dotate sia di apparati GPS fissi, alimentati dall'impianto elettrico di bordo, nonché di apparati GPS  portatili, alimentati da batterie
+b) le unità da diporto possono essere dotate sia di apparati
+GPS fissi, alimentati dall'impianto elettrico di bordo, nonché di apparati GPS portatili, alimentati da batterie alcaline. +
+c) le unità  da diporto in navigazione, effettuata ad una distanza dalla costa superiore a 12 miglia nautiche, devono essere dotate sia di apparati GPS fissi, alimentati dall'impianto elettrico di bordo, nonché di apparati GPS portatili, alimentati da batterie nichel- -
+2024-02-20 17:24:31 - WARNING - Question 1092: Verso quale direzione si orientano gli aghi di una bussola magnetica a bordo dell'unità?:
+a) Nord bussola (meridiano bussola). +
+b) Nord vero (meridiano geografico).
+c) Nord magnetico (meridiano magnetico). -
+2024-02-20 17:25:29 - WARNING - Question 1095: Cos'è una bussola magnetica di bordo?:
+a) lo strumento di bordo utilizzato per la navigazione stimata, basato sulle proprietà del campo magnetico terrestre, in grado di  orientarsi verso il Nord +
+b) lo strumento di bordo utilizzato per la navigazione stimata, basato sulle proprietà del campo magnetico terrestre, in grado di orientarsi verso il Nord vero.
+c) lo strumento di bordo utilizzato per la navigazione stimata, basato sulle proprietà del campo magnetico terrestre, in grado di orientarsi
+verso il Nord magnetico. -
+2024-02-20 17:27:44 - WARNING - Question 1101: La declinazione magnetica è la differenza::
+a) tra la direzione indicata dal meridiano geografico e quella indicata dal meridiano magnetico. +
+b) angolare tra Nord magnetico e
+Nord bussola.
+c) angolare tra Nord vero e Nord bussola. -
+2024-02-20 17:29:47 - WARNING - Question 1113: La rosa di una bussola è graduata::
+a) da 0 a 180 gradi a dritta e a sinistra.
+b) da 0 a 360 gradi in senso orario misurati cominciando da prora. -
+c) da 0 a 360 gradi in senso orario misurati cominciando dalla direzione del Nord bussola (Nb). +
+2024-02-20 17:31:57 - WARNING - Question 1117: Quale metodo posso utilizzare per controllare la deviazione della mia bussola?:
+a) metodo dell'allineamento; metodo dell'osservazione della stella polare. +
+b) metodo del cerchio capace.
+c) metodo del rilevamento di un punto cospicuo e della relativa distanza. -
+2024-02-20 17:33:27 - WARNING - Question 1122: La deviazione magnetica varia in funzione::
+a) degli anni trascorsi  dalla pubblicazione della carta nautica.
+b) della prora che si intende impostare. +
+c) del luogo in cui ci si trova. -
+2024-02-20 17:37:02 - WARNING - Question 1131: Relativamente alla navigazione stimata, si può affermare che::
+a) solitamente i problemi di navigazione stimata sono risolti attraverso il metodo grafico, utilizzando le carte nautiche, le squadrette e il compasso. +
+b) i problemi di navigazione stimata sono risolti solo attraverso l'ausilio del GPS. -
+c) solitamente i problemi di navigazione stimata sono risolti attraverso il punto nave astronomico.
