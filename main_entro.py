@@ -20,7 +20,7 @@ quiz_sections = {
     'manovra e condotta' : (445,599),
     'colreg e segnalamento marittimo' : (600,846),
     'meteorologia' : (847,966),
-    'navigazione cartografica ed elettronica' : (967,1288),
+    'navigazione cartografica ed elettronica' : (967,1288), # r1. (967,1011) 
     'normativa diportistica': (1288,1472)
 }
 
