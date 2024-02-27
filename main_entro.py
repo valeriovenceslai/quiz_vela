@@ -4,9 +4,6 @@ import logging
 import os
 from datetime import datetime
 
-logging.basicConfig(filename=datetime.now().strftime("%Y%m%d%H%M%S") + '.log', level=logging.INFO,
-                    format='%(asctime)s - %(levelname)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
-
 FILE_PATH = os.path.dirname(__file__)
 
 RED = '\033[91m'
@@ -16,23 +13,23 @@ ENDC = '\033[0m'
 quiz_sections = {
     'teoria_dello_scafo' : (0,125),
     'motori' : (126,229),
-    'sicurezza della navigazione' : (230,444),
-    'manovra e condotta' : (445,599),
-    'colreg e segnalamento marittimo' : (600,846),
+    'sicurezza_della_navigazione' : (230,444),
+    'manovra_e_condotta' : (445,599),
+    'colreg_e_segnalamento_marittimo' : (600,846),
     'meteorologia' : (847,966),
-    'navigazione cartografica ed elettronica' : 
+    'navigazione_cartografica_ed_elettronica' : 
         {"All" : (967,1288),
-        "Coordinate geografiche" : (967,1011),
-        "Carte nautiche e proiezione di Mercatore" : (1012,1067),
-        "Navigazione elettronica" : (1068,1080),
-        "Orientamento e rosa dei venti" : (1081,1091),
+        "Coordinate_geografiche" : (967,1011),
+        "Carte_nautiche_e_proiezione_di_Mercatore" : (1012,1067),
+        "Navigazione_elettronica" : (1068,1080),
+        "Orientamento_e_rosa_dei_venti" : (1081,1091),
         "Bussole magnetiche" : (1092,1129),
-        "Elementi di navigazione stimata: tempo, spazio e velocità" : (1130,1201),
-        "Elementi di navigazione costiera" : (1202,1250),
-        "Prora e rotta, scarroccio e deriva per effetto del vento e della corrente" : (1251,1280),
+        "Elementi_di_navigazione_stimata:_tempo,_spazio_e_velocità" : (1130,1201),
+        "Elementi_di_navigazione_costiera" : (1202,1250),
+        "Prora_e_rotta,_scarroccio_e_deriva_per_effetto_del_vento_e_della_corrente" : (1251,1280),
         "Pubblicazioni" : (1281,1288)
         },
-    'normativa diportistica': (1288,1472)
+    'normativa_diportistica': (1288,1472)
 }
 
 valid_answers = ['a', 'b', 'c']
@@ -65,6 +62,8 @@ def main():
     
     
     def select_section():
+        selected_subsection = ""
+
         while True:
             print("Choose a quiz section:")
             for idx, section in enumerate(quiz_sections.keys()):
@@ -80,7 +79,7 @@ def main():
                     print(f"You selected: {selected_section}")
 
                     if isinstance(quiz_sections[selected_section], dict):
-                        target_tuple = select_subsection(quiz_sections[selected_section])
+                        target_tuple, selected_subsection = select_subsection(quiz_sections[selected_section])
                     else:
                         target_tuple = quiz_sections[selected_section]
                         print(f"Section tuple: {target_tuple}")
@@ -90,7 +89,7 @@ def main():
             else:
                 print("Invalid input. Please enter a valid number.")
 
-        return target_tuple
+        return target_tuple, selected_section, selected_subsection
 
     def select_subsection(subsections):
         while True:
@@ -114,10 +113,13 @@ def main():
             else:
                 print("Invalid input. Please enter a valid number.")
 
-        return target_tuple
+        return target_tuple, selected_subsection
 
     # Call the function to select the section
-    target_tuple = select_section()
+    target_tuple, selected_section, selected_subsection = select_section()
+
+    logging.basicConfig(filename=selected_section +"_"+selected_subsection+"_"+ datetime.now().strftime("%Y%m%d%H%M%S") + '.log', level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
     
     with open(quiz_file_path, newline='', encoding='utf-8') as csvfile:
         reader = csv.reader(csvfile, delimiter=',', quotechar='"')
