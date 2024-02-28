@@ -124,7 +124,6 @@ def main():
     with open(quiz_file_path, newline='', encoding='utf-8') as csvfile:
         reader = csv.reader(csvfile, delimiter=',', quotechar='"')
         header = next(reader)  # Skip the header
-        header = next(reader)  # Skip the header
 
         success_count = 0
         fail_count = 0
