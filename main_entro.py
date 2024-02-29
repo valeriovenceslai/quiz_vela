@@ -2,6 +2,7 @@ import csv
 import random
 import logging
 import os
+import quiz_section
 from datetime import datetime
 
 FILE_PATH = os.path.dirname(__file__)
@@ -9,33 +10,6 @@ FILE_PATH = os.path.dirname(__file__)
 RED = '\033[91m'
 GREEN = '\033[92m'
 ENDC = '\033[0m'
-
-quiz_sections = {
-    'teoria_dello_scafo' : (0,125),
-    'motori' : (126,229),
-    'sicurezza_della_navigazione':
-        {
-            "all" : (230,444),
-            "prevenzione_degli_incendi_e_uso_degli_estintori" : (230,260)
-        },
-    'manovra_e_condotta' : (445,599),
-    'colreg_e_segnalamento_marittimo' : (600,846),
-    'meteorologia' : (847,966),
-    'navigazione_cartografica_ed_elettronica' : 
-        {
-            "all" : (967,1288),
-            "coordinate_geografiche" : (967,1011),
-            "carte_nautiche_e_proiezione_di_Mercatore" : (1012,1067),
-            "navigazione_elettronica" : (1068,1080),
-            "orientamento_e_rosa_dei_venti" : (1081,1091),
-            "bussole magnetiche" : (1092,1129),
-            "elementi_di_navigazione_stimata:_tempo,_spazio_e_velocità" : (1130,1201),
-            "elementi_di_navigazione_costiera" : (1202,1250),
-            "prora_e_rotta,_scarroccio_e_deriva_per_effetto_del_vento_e_della_corrente" : (1251,1280),
-            "pubblicazioni" : (1281,1288)
-        },
-    'normativa_diportistica': (1288,1472)
-}
 
 def overwrite_csv(quiz_file_path, fig_idx_dict):
 
@@ -83,7 +57,7 @@ def select_section():
 
     while True:
         print("Choose a quiz section:")
-        for idx, section in enumerate(quiz_sections.keys()):
+        for idx, section in enumerate(quiz_section.quiz_sections.keys()):
             print(f"{idx}: {section}")
 
         user_input = input("Enter the number corresponding to the quiz section: ")
@@ -91,14 +65,14 @@ def select_section():
         if user_input.isdigit():
             section_idx = int(user_input)
 
-            if 0 <= section_idx < len(quiz_sections):
-                selected_section = list(quiz_sections.keys())[section_idx]
+            if 0 <= section_idx < len(quiz_section.quiz_sections):
+                selected_section = list(quiz_section.quiz_sections.keys())[section_idx]
                 print(f"You selected: {selected_section}")
 
-                if isinstance(quiz_sections[selected_section], dict):
-                    target_tuple, selected_subsection = select_subsection(quiz_sections[selected_section])
+                if isinstance(quiz_section.quiz_sections[selected_section], dict):
+                    target_tuple, selected_subsection = select_subsection(quiz_section.quiz_sections[selected_section])
                 else:
-                    target_tuple = quiz_sections[selected_section]
+                    target_tuple = quiz_section.quiz_sections[selected_section]
                     print(f"Section tuple: {target_tuple}")
                 break
             else:
