@@ -37,14 +37,32 @@ quiz_sections = {
     'normativa_diportistica': (1288,1472)
 }
 
-valid_answers = ['a', 'b', 'c']
+def overwrite_csv(quiz_file_path, fig_idx_dict):
+
+    # If the dict is empty, there is no need to overwrite the csv
+    if not fig_idx_dict:
+        return
+
+    # read all the lines
+    with open(quiz_file_path, newline='', encoding='utf-8') as file:
+        lines = file.readlines()
+
+    # substitute the lines in the dict
+    for key in fig_idx_dict.keys():
+        row = ';'.join(fig_idx_dict[key])
+        row += '\n'
+        lines[key] = row
+
+    # write all the lines, the ones substituted and the ones not substituted
+    with open(quiz_file_path, 'w', newline='', encoding='utf-8') as file:
+        file.writelines(lines)
 
 def process_question(row):
     cleaned_row = [col.strip() for col in row if col.strip()]  # Remove leading/trailing spaces from each non-empty column
+
+    question_idx, fig_idx, question, answer1, is_true1, answer2, is_true2, answer3, is_true3 = cleaned_row
     
-    question_idx, question, answer1, is_true1, answer2, is_true2, answer3, is_true3 = cleaned_row
-    
-    return question_idx, question, answer1, is_true1, answer2, is_true2, answer3, is_true3
+    return question_idx, fig_idx, question, answer1, is_true1, answer2, is_true2, answer3, is_true3
 
 def display_question(question_idx, question, answer1, answer2, answer3):
     print(f"\nQuestion {question_idx}: {question}")
@@ -60,65 +78,70 @@ def evaluate_answer(user_answer, correct_answer_idx, correct_answer):
         print(RED + "Wrong!" + ENDC + f" The correct answer was {correct_answer_idx} : {correct_answer}\n")
         return False
 
+def select_section():
+    selected_subsection = ""
+
+    while True:
+        print("Choose a quiz section:")
+        for idx, section in enumerate(quiz_sections.keys()):
+            print(f"{idx}: {section}")
+
+        user_input = input("Enter the number corresponding to the quiz section: ")
+
+        if user_input.isdigit():
+            section_idx = int(user_input)
+
+            if 0 <= section_idx < len(quiz_sections):
+                selected_section = list(quiz_sections.keys())[section_idx]
+                print(f"You selected: {selected_section}")
+
+                if isinstance(quiz_sections[selected_section], dict):
+                    target_tuple, selected_subsection = select_subsection(quiz_sections[selected_section])
+                else:
+                    target_tuple = quiz_sections[selected_section]
+                    print(f"Section tuple: {target_tuple}")
+                break
+            else:
+                print("Invalid input. Please enter a number within the specified range.")
+        else:
+            print("Invalid input. Please enter a valid number.")
+
+    return target_tuple, selected_section, selected_subsection
+
+def select_subsection(subsections):
+    while True:
+        print("Choose a subsection:")
+        for idx, subsection in enumerate(subsections.keys()):
+            print(f"{idx}: {subsection}")
+
+        user_input = input("Enter the number corresponding to the subsection: ")
+
+        if user_input.isdigit():
+            subsection_idx = int(user_input)
+
+            if 0 <= subsection_idx < len(subsections):
+                selected_subsection = list(subsections.keys())[subsection_idx]
+                print(f"You selected: {selected_subsection}")
+                target_tuple = subsections[selected_subsection]
+                print(f"Subsection tuple: {target_tuple}")
+                break
+            else:
+                print("Invalid input. Please enter a number within the specified range.")
+        else:
+            print("Invalid input. Please enter a valid number.")
+
+    return target_tuple, selected_subsection
+
+
+ALL_IN_ORDER = True
+
+fig_idx_dict = dict()
+
+valid_answers = ['a', 'b', 'c']
+
+
 def main():
     quiz_file_path = os.path.join(FILE_PATH, "quiz_entro.csv")  # Replace with the actual path to your CSV file
-
-    ALL_IN_ORDER = True
-    
-    
-    def select_section():
-        selected_subsection = ""
-
-        while True:
-            print("Choose a quiz section:")
-            for idx, section in enumerate(quiz_sections.keys()):
-                print(f"{idx}: {section}")
-
-            user_input = input("Enter the number corresponding to the quiz section: ")
-
-            if user_input.isdigit():
-                section_idx = int(user_input)
-
-                if 0 <= section_idx < len(quiz_sections):
-                    selected_section = list(quiz_sections.keys())[section_idx]
-                    print(f"You selected: {selected_section}")
-
-                    if isinstance(quiz_sections[selected_section], dict):
-                        target_tuple, selected_subsection = select_subsection(quiz_sections[selected_section])
-                    else:
-                        target_tuple = quiz_sections[selected_section]
-                        print(f"Section tuple: {target_tuple}")
-                    break
-                else:
-                    print("Invalid input. Please enter a number within the specified range.")
-            else:
-                print("Invalid input. Please enter a valid number.")
-
-        return target_tuple, selected_section, selected_subsection
-
-    def select_subsection(subsections):
-        while True:
-            print("Choose a subsection:")
-            for idx, subsection in enumerate(subsections.keys()):
-                print(f"{idx}: {subsection}")
-
-            user_input = input("Enter the number corresponding to the subsection: ")
-
-            if user_input.isdigit():
-                subsection_idx = int(user_input)
-
-                if 0 <= subsection_idx < len(subsections):
-                    selected_subsection = list(subsections.keys())[subsection_idx]
-                    print(f"You selected: {selected_subsection}")
-                    target_tuple = subsections[selected_subsection]
-                    print(f"Subsection tuple: {target_tuple}")
-                    break
-                else:
-                    print("Invalid input. Please enter a number within the specified range.")
-            else:
-                print("Invalid input. Please enter a valid number.")
-
-        return target_tuple, selected_subsection
 
     # Call the function to select the section
     target_tuple, selected_section, selected_subsection = select_section()
@@ -127,7 +150,7 @@ def main():
                     format='%(asctime)s - %(levelname)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
     
     with open(quiz_file_path, newline='', encoding='utf-8') as csvfile:
-        reader = csv.reader(csvfile, delimiter=',', quotechar='"')
+        reader = csv.reader(csvfile, delimiter=';', quotechar='"')
         header = next(reader)  # Skip the header
 
         success_count = 0
@@ -144,10 +167,24 @@ def main():
         if ALL_IN_ORDER is False:
             random.shuffle(new_rows)
 
+    try:
+
         for row in new_rows:
-            
-            question_idx, question, answer1, is_true1, answer2, is_true2, answer3, is_true3 = process_question(row)
+
+            question_idx, fig_idx, question, answer1, is_true1, answer2, is_true2, answer3, is_true3 = process_question(row)
             display_question(question_idx, question, answer1, answer2, answer3)
+
+            if 'figura' in question and fig_idx == 'None':
+                user_answer = input("Figura is in question, add the figure idx: ")
+
+                while user_answer.isdigit() is False:
+                    user_answer = input("Figura is in question, add the figure idx: ")   
+
+                # In the new row, substitute the second entry with the figure idx
+                new_row    = row
+                new_row[1] = user_answer
+
+                fig_idx_dict[int(question_idx)] = new_row                  
 
             user_answer = input("Your choice (a, b, c): ")
             
@@ -187,6 +224,13 @@ def main():
             if ALL_IN_ORDER is False:
                 if success_count + fail_count == 20:  # Stop after 20 questions
                     break
+
+        overwrite_csv(quiz_file_path, fig_idx_dict)
+
+    except KeyboardInterrupt:
+
+        overwrite_csv(quiz_file_path, fig_idx_dict)
+
 
     print("\nQuiz Stats:")
     print(f"Total Questions: {success_count + fail_count}")
