@@ -4,7 +4,8 @@ quiz_sections = {
     'sicurezza_della_navigazione':
         {
             "all" : (230,444),
-            "prevenzione_degli_incendi_e_uso_degli_estintori" : (230,260)
+            "prevenzione_degli_incendi_e_uso_degli_estintori" : (230,260),
+            "dotazioni_di_sicurezza_e_mezzi_di_salvataggio" : (274,320)
         },
     'manovra_e_condotta' : (445,599),
     'colreg_e_segnalamento_marittimo' : (600,846),
