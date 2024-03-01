@@ -876,10 +876,10 @@ QUIZ BASE 2022 PATENTE NAUTICA;None;RISPOSTA 1                    V/F;RSPOSTA 2 
 875;None;Quali sono tra questi gli elementi che preannunciano l'approssimarsi di tempo cattivo durante la navigazione?;brusca caduta della pressione atmosferica e presenza di nuvole ad alto sviluppo verticale.;V;presenza di mare lungo e nuvole stratificate.;F;diminuzione della temperatura di rugiada e presenza di mare lungo.;F;
 876;None;Nell'ambito delle previsioni locali, quali segni premonitori possono indicare la possibile formazione di nebbia?;movimento di un flusso di aria fredda e secca da unaregione oceanica piu' calda ad una piu' fredda, presenza di acqua molto piu' calda rispetto all'aria sovrastante e;F;movimento di un flusso di aria calda e umida da una regione oceanica piu' calda a una piu' fredda, presenza di acqua molto piu' fredda rispetto all'aria sovrastante e presenza di vento;V;oscuramento del cielo durante le ore serali, presenza di aria secca e vento regolare.;F;
 877;None;Come possono suddividersi le carte meteorologiche?;carte al suolo e carte in quota.;V;carte generali e carte particolari.;F;carte gnomoniche e carte equatoriali.;F;
-878;None;Che tipo di fronte e' rappresentato in figura?;fronte caldo.;F;fronte freddo.;V;fronte occluso.;F;
-879;None;Che tipo di fronte e' rappresentato in figura?;fronte freddo.;F;fronte occluso.;F;fronte caldo.;V;
-880;None;Che tipo di fronte e' rappresentato in figura?;fronte freddo.;F;fronte stazionario.;V;fronte caldo.;F;
-881;None;Che tipo di fronte e' rappresentato in figura?;fronte occluso;V;fronte stazionario.;F;fronte caldo.;F;
+878;88;Che tipo di fronte e' rappresentato in figura?;fronte caldo.;F;fronte freddo.;V;fronte occluso.;F;
+879;89;Che tipo di fronte e' rappresentato in figura?;fronte freddo.;F;fronte occluso.;F;fronte caldo.;V;
+880;90;Che tipo di fronte e' rappresentato in figura?;fronte freddo.;F;fronte stazionario.;V;fronte caldo.;F;
+881;91;Che tipo di fronte e' rappresentato in figura?;fronte occluso;V;fronte stazionario.;F;fronte caldo.;F;
 882;None;Quali sono i venti del I quadrante?;Mezzogiorno, Libeccio ePonente.;F;Ponente, Maestrale eTramontana.;F;Tramontana, Grecale e Levante.;V;
 883;None;Quali sono i venti del II quadrante?;Levante, Scirocco eMezzogiorno.;V;Mezzogiorno, Libeccio ePonente.;F;Ponente, Maestrale e Tramontana.;F;
 884;None;Quali sono i venti del III quadrante?;Tramontana, Grecale eLevante.;F;Ponente, Maestrale eTramontana.;F;Mezzogiorno, Libeccio e Ponente.;V;
@@ -936,7 +936,7 @@ QUIZ BASE 2022 PATENTE NAUTICA;None;RISPOSTA 1                    V/F;RSPOSTA 2 
 935;None;La violenza di un temporale e' in funzione:;dello sviluppo verticale della nube.;V;dell'escursione termica.;F;della stagione.;F
 936;None;Il fronte:;e' quella linea di separazione sussistente tra due correnti di stessa intensita' ma con verso opposto.;F;e' la linea che separa due strati di cumuli-nembi e nembo-strati.;F;e' una linea che esprime la superficie di contatto o di discontinuita' che separa due masse d'aria.;V
 937;None;"I ""Cumuli"" sono:";nubi grigie stratiformi.;F;le nubi piu' alte di aspetto chiaro e filamentoso.;F;nubi a sviluppo verticale.;V
-938;None;"Il ""fetch minimo"" e':";il tratto di mare, privo di ostacoli, sul quale soffia un vento per un certo periodo, oltre il quale tratto di mare le onde raggiungeranno la massima altezza per quel;V;una condizione del mare caratterizzata da onde corte e ripide.;F;un vento caldo e secco discendente da una catena montuosa.;F
+938;None;"Il ""fetch minimo"" e':";il tratto di mare, privo di ostacoli, sul quale soffia un vento per un certo periodo, oltre il quale tratto di mare le onde raggiungeranno la massima altezza per quel dato vento.;V;una condizione del mare caratterizzata da onde corte e ripide.;F;un vento caldo e secco discendente da una catena montuosa.;F
 939;None;In genere la pressione aumenta se:;spirano venti freddi dal 4ï¿½ e1ï¿½ quadrante.;V;spirano venti freddi dal 2ï¿½ e 3ï¿½quadrante.;F;nessuna delle due affermazioni suddette e' corretta.;F
 940;None;Sono nuvole temporalesche:;gli altocumuli;F;i cumulonembi.;V;i nembostrati.;F
 941;None;Generalmente, al passaggio di un fronte freddo:;la pressione diminuisce in modo irregolare, inoltre la temperatura e l'umidita' sono in aumento.;F;la visibilita' peggiora, vi sono nubi di tipo altostratiforme e nebbie.;F;la pressione aumenta bruscamente, il vento rinforza con raffiche.;V
