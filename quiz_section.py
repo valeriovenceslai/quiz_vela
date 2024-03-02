@@ -23,5 +23,12 @@ quiz_sections = {
             "prora_e_rotta,_scarroccio_e_deriva_per_effetto_del_vento_e_della_corrente" : (1251,1280),
             "pubblicazioni" : (1281,1288)
         },
-    'normativa_diportistica': (1288,1472)
+    'normativa_diportistica': 
+        {
+            'all' : (1288,1472),
+            'leggi_e_regolamenti' : (1288,1330),
+            'comandante_conduttore_utilizzatore' : (1331,1333),
+            'attivita_commerciale_e_documenti': (1334,1413),
+            'sci_nautico_pesca_norme_ambientali' : (1414,1472)
+        }
 }

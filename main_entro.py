@@ -4,12 +4,20 @@ import logging
 import os
 import quiz_section
 from datetime import datetime
+import tkinter as tk
+from tkinter import messagebox
 
 FILE_PATH = os.path.dirname(__file__)
 
 RED = '\033[91m'
 GREEN = '\033[92m'
 ENDC = '\033[0m'
+
+# def display_fig(fig_idx):
+
+#     image_path = os.path.join(FILE_PATH, 'tmp', 'output_png', f'contour_sub_image_{fig_idx}.png')
+
+#     Image(image_path)
 
 def overwrite_csv(quiz_file_path, fig_idx_dict):
 
@@ -148,6 +156,10 @@ def main():
             question_idx, fig_idx, question, answer1, is_true1, answer2, is_true2, answer3, is_true3 = process_question(row)
             display_question(question_idx, question, answer1, answer2, answer3)
 
+            if fig_idx != 'None':
+                # display_fig(fig_idx)
+                pass
+                
             if 'figura' in question and fig_idx == 'None':
                 user_answer = input("Figura is in question, add the figure idx: ")
 
