@@ -2,7 +2,8 @@ import csv
 import random
 import logging
 import os
-import quiz_section
+from quiz_section import quiz_sections_entro
+from quiz_section import select_section
 from datetime import datetime
 import tkinter as tk
 from tkinter import messagebox
@@ -60,60 +61,6 @@ def evaluate_answer(user_answer, correct_answer_idx, correct_answer):
         print(RED + "Wrong!" + ENDC + f" The correct answer was {correct_answer_idx} : {correct_answer}\n")
         return False
 
-def select_section():
-    selected_subsection = ""
-
-    while True:
-        print("Choose a quiz section:")
-        for idx, section in enumerate(quiz_section.quiz_sections.keys()):
-            print(f"{idx}: {section}")
-
-        user_input = input("Enter the number corresponding to the quiz section: ")
-
-        if user_input.isdigit():
-            section_idx = int(user_input)
-
-            if 0 <= section_idx < len(quiz_section.quiz_sections):
-                selected_section = list(quiz_section.quiz_sections.keys())[section_idx]
-                print(f"You selected: {selected_section}")
-
-                if isinstance(quiz_section.quiz_sections[selected_section], dict):
-                    target_tuple, selected_subsection = select_subsection(quiz_section.quiz_sections[selected_section])
-                else:
-                    target_tuple = quiz_section.quiz_sections[selected_section]
-                    print(f"Section tuple: {target_tuple}")
-                break
-            else:
-                print("Invalid input. Please enter a number within the specified range.")
-        else:
-            print("Invalid input. Please enter a valid number.")
-
-    return target_tuple, selected_section, selected_subsection
-
-def select_subsection(subsections):
-    while True:
-        print("Choose a subsection:")
-        for idx, subsection in enumerate(subsections.keys()):
-            print(f"{idx}: {subsection}")
-
-        user_input = input("Enter the number corresponding to the subsection: ")
-
-        if user_input.isdigit():
-            subsection_idx = int(user_input)
-
-            if 0 <= subsection_idx < len(subsections):
-                selected_subsection = list(subsections.keys())[subsection_idx]
-                print(f"You selected: {selected_subsection}")
-                target_tuple = subsections[selected_subsection]
-                print(f"Subsection tuple: {target_tuple}")
-                break
-            else:
-                print("Invalid input. Please enter a number within the specified range.")
-        else:
-            print("Invalid input. Please enter a valid number.")
-
-    return target_tuple, selected_subsection
-
 
 ALL_IN_ORDER = True
 
@@ -126,7 +73,7 @@ def main():
     quiz_file_path = os.path.join(FILE_PATH, "quiz_entro.csv")  # Replace with the actual path to your CSV file
 
     # Call the function to select the section
-    target_tuple, selected_section, selected_subsection = select_section()
+    target_tuple, selected_section, selected_subsection = select_section(quiz_sections_entro)
 
     logging.basicConfig(filename=selected_section +"_"+selected_subsection+"_"+ datetime.now().strftime("%Y%m%d%H%M%S") + '.log', level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
