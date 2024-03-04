@@ -4,10 +4,13 @@ import logging
 import os
 from datetime import datetime
 
-logging.basicConfig(filename=datetime.now().strftime("%Y%m%d%H%M%S") + '.log', level=logging.INFO,
-                    format='%(asctime)s - %(levelname)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
-
 FILE_PATH = os.path.dirname(__file__)
+
+filename = 'quiz_vela_' + datetime.now().strftime("%Y%m%d%H%M%S") + '.log'
+filepath = os.path.join(FILE_PATH, filename)
+
+logging.basicConfig(filename=filepath, level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
 
 RED = '\033[91m'
 GREEN = '\033[92m'
