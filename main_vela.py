@@ -3,11 +3,16 @@ import random
 import logging
 import os
 from datetime import datetime
-
-logging.basicConfig(filename=datetime.now().strftime("%Y%m%d%H%M%S") + '.log', level=logging.INFO,
-                    format='%(asctime)s - %(levelname)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
+from quiz_section import quiz_sections_vela
+from quiz_section import select_section
 
 FILE_PATH = os.path.dirname(__file__)
+
+filename = 'quiz_vela_' + datetime.now().strftime("%Y%m%d%H%M%S") + '.log'
+filepath = os.path.join(FILE_PATH, filename)
+
+logging.basicConfig(filename=filepath, level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
 
 RED = '\033[91m'
 GREEN = '\033[92m'
@@ -36,7 +41,9 @@ def evaluate_answer(user_answer, correct_answer_idx, correct_answer):
 def main():
     quiz_file_path = os.path.join(FILE_PATH, "quiz_vela.csv")  # Replace with the actual path to your CSV file
 
-    ALL_IN_ORDER = True
+    target_tuple, selected_section, selected_subsection = select_section(quiz_sections_vela)
+
+    ALL_IN_ORDER = False
     
     with open(quiz_file_path, newline='', encoding='utf-8') as csvfile:
         reader = csv.reader(csvfile, delimiter=',', quotechar='"')
@@ -50,19 +57,20 @@ def main():
         
         new_rows = list()
 
-        for el in enumerate(rows):
-            new_rows.append(el)
+        for idx, el in enumerate(rows):
+            if idx in range(target_tuple[0], target_tuple[1]):
+                new_rows.append(el)
 
         if ALL_IN_ORDER is False:
             random.shuffle(new_rows)
 
         for row in new_rows:
 
-            question_idx = row[1][0]
-            question     = row[1][1]
-            answer1      = row[1][2]
-            is_true1     = row[1][3]
-            answer2      = row[1][4]
+            question_idx = row[0]
+            question     = row[1]
+            answer1      = row[2]
+            is_true1     = row[3]
+            answer2      = row[4]
 
             display_question(question_idx, question)
 
